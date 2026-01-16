@@ -1,16 +1,19 @@
-import Theater from "~/types/Theater";
+import axios from "axios";
+import type { Theater } from "~/types/Theater";
 
-const mockTheaters: Theater[] = [
-  {
-    id: 1,
-    name: "Theater 1",
-    seats: 60,
-    premiumSeats: 20,
-  },
-];
+const BASE_URL = "http://localhost:5236/api/theaters";
 
-export const getTheaterById = async (id: number): Promise<Theater | null> => {
-  const theater = mockTheaters.find((t) => t.id === id);
-  if (!theater) return null;
-  return theater;
-};
+export async function getAllTheaters(): Promise<Theater[]> {
+  const res = await axios.get<Theater[]>(BASE_URL);
+  return res.data;
+}
+
+export async function getTheaterById(id: number): Promise<Theater | null> {
+  try {
+    const res = await axios.get<Theater>(`${BASE_URL}/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error("Failed to fetch theater", err);
+    return null;
+  }
+}

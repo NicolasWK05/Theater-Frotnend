@@ -1,0 +1,7 @@
+export interface Seat {
+  id: number;
+  rowNumber: number;
+  columnNumber: number;
+  isAvailable: boolean;
+  isPremium: boolean;
+}

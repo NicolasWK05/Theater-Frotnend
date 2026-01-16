@@ -1,4 +1,4 @@
-import { createSignal } from "solid-js";
+import { createSignal, onMount } from "solid-js";
 import { Film } from "../types/Film";
 import { getAllFilms } from "../services/filmService";
 
@@ -10,7 +10,9 @@ export default function Films() {
     setFilms(data);
   };
 
-  fetchFilms();
+  onMount(() => {
+    fetchFilms();
+  });
 
   return (
     <div class="flex flex-wrap justify-center">

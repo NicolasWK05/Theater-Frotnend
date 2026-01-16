@@ -1,18 +1,16 @@
-import Showing from "./Showing";
+import { Screening } from "./Screening";
 
 export interface Film {
   id: number;
   title: string;
+  director: string;
+  genre: string;
+  duration: number;
+  releaseDate: Date;
   description: string;
   coverUrl: string;
-  releaseYear: number;
-  genre: string[];
-  rating: number;
-  director: string;
-  actors: string[];
-  duration: number;
   trailerUrl: string;
-  showtimes: Showing[];
+  bannerUrl: string;
 
-  banner?: string;
+  showtimes: Screening[];
 }

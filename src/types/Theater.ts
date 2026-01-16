@@ -1,7 +1,7 @@
-export default interface Theater {
+export interface Theater {
   id: number;
   name: string;
+  address: string;
 
-  seats: number;
-  premiumSeats: number;
+  screens?: Screen[];
 }

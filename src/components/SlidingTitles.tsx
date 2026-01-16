@@ -7,12 +7,12 @@ export default function SlidingTitles() {
   const [films, setFilms] = createSignal<Film[]>([]);
   const [currentIndex, setCurrentIndex] = createSignal(0);
 
-  let imgs = films().map((film) => film.banner);
+  let imgs = films().map((film) => film.bannerUrl);
 
   createEffect(async () => {
     const bannerFilms = await getFilmBanners();
     setFilms(bannerFilms);
-    imgs = films().map((film) => film.banner);
+    imgs = films().map((film) => film.bannerUrl);
   });
 
   createEffect(() => {
@@ -35,7 +35,7 @@ export default function SlidingTitles() {
           class="absolute top-0 left-0 w-full h-full"
         >
           <img
-            src={film.banner}
+            src={film.bannerUrl}
             class="w-full h-full rounded-xl object-cover"
             style={{
               "object-fit": "cover",
